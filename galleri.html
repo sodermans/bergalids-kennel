@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Bildgalleri — Labradorbilder från Bergalids Kennel i Furusund</title>
+  <meta name="description"
+    content="Se bilder på Madde, Stina och våra labradorvalpar från Bergalids Kennel i Furusund, Stockholm. Välmeriterade labrador retrievers med fantastiskt temperament." />
+  <meta name="keywords"
+    content="labrador bilder, labradorvalp foton, labrador kennel Stockholm, labrador retriever valpar, Bergalids Kennel" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.bergalidskennel.se/galleri.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Bergalids Kennel" />
+  <meta property="og:locale" content="sv_SE" />
+  <meta property="og:url" content="https://www.bergalidskennel.se/galleri.html" />
+  <meta property="og:title" content="Bildgalleri — Labradorbilder från Bergalids Kennel" />
+  <meta property="og:description"
+    content="Se bilder på Madde, Stina och labradorvalpar från Bergalids Kennel i Furusund, Stockholm." />
+  <meta property="og:image" content="https://www.bergalidskennel.se/bilder/hundar/Madde-1.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bildgalleri — Bergalids Kennel" />
+  <meta name="twitter:description"
+    content="Bilder på Madde, Stina och labradorvalpar från Bergalids Kennel, Furusund." />
+  <meta name="twitter:image" content="https://www.bergalidskennel.se/bilder/hundar/Madde-1.jpg" />
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .galleri-hero {
+      padding-top: calc(var(--nav-h) + 80px);
+      padding-bottom: 56px;
+      text-align: center;
+    }
+
+    .gallery-section {
+      padding-top: 0;
+      padding-bottom: var(--section-py);
+    }
+
+    .photo-credit {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 28px;
+      font-style: italic;
+    }
+
+    /* Grid used in all tabs */
+    .tab-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .tab-gallery-grid .gallery-item img {
+      height: 260px;
+    }
+
+    /* Kull 2025 placeholder grid */
+    .placeholder-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    /* Info box for "coming soon" tabs */
+    .tab-notice {
+      background: var(--cream);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .tab-notice strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 768px) {
+
+      .tab-gallery-grid,
+      .placeholder-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .tab-gallery-grid,
+      .placeholder-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-tab-nav {
+        flex-wrap: wrap;
+        border-radius: var(--r);
+        width: 100%;
+      }
+
+      .gallery-tab-btn {
+        flex: 1;
+        text-align: center;
+        padding: 10px 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="bilder/Logo/logo-wide-transp.png" alt="Bergalids Kennel" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html#om-oss">Vad vi gör</a></li>
+        <li><a href="index.html#kull-2026">Kull 2026</a></li>
+        <li><a href="galleri.html" style="color:var(--accent)">Galleri</a></li>
+        <li><a href="index.html#kontakt">Kontakta oss</a></li>
+        <li class="nav__dropdown">
+          <span class="nav__dropdown-toggle">
+            Tidigare kullar
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </span>
+          <div class="nav__dropdown-menu">
+            <a href="kull-2025.html">Kull 2025</a>
+            <a href="tidigare-kullar/kull-2024.html">Kull 2024</a>
+            <a href="tidigare-kullar/kull-2023.html">Kull 2023</a>
+          </div>
+        </li>
+      </ul>
+      <button class="nav__toggle" aria-label="Öppna meny">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile">
+      <a href="index.html#om-oss">Vad vi gör</a>
+      <a href="index.html#kull-2026">Kull 2026</a>
+      <a href="galleri.html">Galleri</a>
+      <a href="index.html#kontakt">Kontakta oss</a>
+      <a href="kull-2025.html">Kull 2025</a>
+      <a href="tidigare-kullar/kull-2024.html">Kull 2024</a>
+    </div>
+  </nav>
+
+
+  <!-- ====== HERO ====== -->
+  <div class="container galleri-hero">
+    <p class="eyebrow">Bildgalleri</p>
+    <h1 class="section-heading" style="font-size: clamp(2.5rem, 5vw, 4rem);">Våra hundar</h1>
+    <p class="section-lead" style="margin-inline: auto;">
+      Bilder på Madde, Stina och valparna från Bergalids Kennel.
+    </p>
+  </div>
+
+
+  <!-- ====== GALLERY WITH TABS ====== -->
+  <section class="gallery-section">
+    <div class="container">
+
+      <!-- Tab navigation -->
+      <div class="gallery-tab-nav">
+        <button class="gallery-tab-btn active" data-tab="madde">Madde</button>
+        <button class="gallery-tab-btn" data-tab="stina">Stina</button>
+        <button class="gallery-tab-btn" data-tab="kullar">Tidigare kullar</button>
+      </div>
+
+
+      <!-- ===== TAB: MADDE ===== -->
+      <div class="gallery-tab-content active" id="tab-madde">
+
+        <div class="tab-gallery-grid">
+
+          <div class="gallery-item reveal">
+            <img src="bilder/hundar/Madde-1.jpg" alt="Madde" />
+            <div class="gallery-item__overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-1">
+            <img src="bilder/hundar/Madde-2.jpg" alt="Madde" />
+            <div class="gallery-item__overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-2">
+            <img src="bilder/hundar/Madde-3.jpg" alt="Madde" />
+            <div class="gallery-item__overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal">
+            <img src="bilder/hundar/Madde-4.jpg" alt="Madde" />
+            <div class="gallery-item__overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-1">
+            <img src="bilder/hundar/Madde-5.jpg" alt="Madde" />
+            <div class="gallery-item__overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Nya Bilder -->
+          <div class="gallery-item reveal">
+            <img src="bilder/hundar/madde-6.jpg" alt="Madde" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal reveal--delay-1">
+            <img src="bilder/hundar/madde-7.jpg" alt="Madde" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal reveal--delay-2">
+            <img src="bilder/hundar/madde-8.jpg" alt="Madde" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="bilder/hundar/madde-9.jpg" alt="Madde" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal reveal--delay-1">
+            <img src="bilder/hundar/madde-10.jpg" alt="Madde" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+
+          <!-- Madde + Stina tillsammans -->
+          <div class="gallery-item reveal">
+            <img src="bilder/hundar/madde-stina-1.jpg" alt="Madde och Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal reveal--delay-1">
+            <img src="bilder/hundar/madde-stina-2.jpg" alt="Madde och Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal reveal--delay-2">
+            <img src="bilder/hundar/Madde-Stina-4.jpg" alt="Madde och Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+
+        </div>
+
+        <p class="photo-credit">Foto: Angelica Angerstål, Norrtälje</p>
+
+      </div><!-- /tab-madde -->
+
+
+      <!-- ===== TAB: STINA ===== -->
+      <div class="gallery-tab-content" id="tab-stina">
+
+        <div class="tab-gallery-grid">
+
+          <div class="gallery-item reveal">
+            <img src="bilder/hundar/stina-1.jpg" alt="Stina i solen" />
+            <div class="gallery-item__overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-1">
+            <img src="bilder/hundar/stina-2.jpg" alt="Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-2">
+            <img src="bilder/hundar/madde-stina-1.jpg" alt="Madde och Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+
+          <div class="gallery-item reveal">
+            <img src="bilder/hundar/madde-stina-2.jpg" alt="Madde och Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+
+          <!-- Nya Bilder Stina -->
+          <div class="gallery-item reveal reveal--delay-1">
+            <img src="bilder/hundar/Stina-3.jpg" alt="Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal reveal--delay-2">
+            <img src="bilder/hundar/Stina-4.jpg" alt="Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="bilder/hundar/Stina-5.jpg" alt="Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal reveal--delay-1">
+            <img src="bilder/hundar/Stina-6.jpg" alt="Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal reveal--delay-2">
+            <img src="bilder/hundar/Stina-7.jpg" alt="Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="bilder/hundar/Stina-8.jpg" alt="Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal reveal--delay-1">
+            <img src="bilder/hundar/Stina-9.jpg" alt="Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal reveal--delay-2">
+            <img src="bilder/hundar/Stina-10.jpeg" alt="Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal reveal--delay-1">
+            <img src="bilder/hundar/Stina-12.jpg" alt="Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+          <div class="gallery-item reveal reveal--delay-2">
+            <img src="bilder/hundar/Madde-Stina-4.jpg" alt="Madde och Stina" />
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+          </div>
+
+        </div>
+
+        <p class="photo-credit">Fler bilder på Stina läggs till löpande</p>
+
+      </div><!-- /tab-stina -->
+
+
+      <!-- ===== TAB: TIDIGARE KULLAR ===== -->
+      <div class="gallery-tab-content" id="tab-kullar">
+
+        <!-- Sub-tab nav -->
+        <div class="gallery-subtab-nav">
+          <button class="gallery-subtab-btn active" data-subtab="kull2024">Kull 2024</button>
+          <button class="gallery-subtab-btn" data-subtab="kull2025">Kull 2025</button>
+          <button class="gallery-subtab-btn" data-subtab="kull2023">Kull 2023</button>
+        </div>
+
+
+        <!-- Sub-tab: Kull 2024 -->
+        <div class="gallery-subtab-content active" id="subtab-kull2024">
+
+          <div class="tab-gallery-grid">
+            <div class="gallery-item reveal">
+              <img src="bilder/kullar/tidigare-kullar/valpar-2024.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-1">
+              <img src="bilder/kullar/tidigare-kullar/valpar-2024-2.png" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-2">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-1.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-2.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-1">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-3.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-2">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-4.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-5.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-1">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-6.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-2">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-7.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-8.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-1">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-9.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-2">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-10.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-11.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-1">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-12.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-2">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-13.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-14.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-1">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-15.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-2">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-16.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-17.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-1">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-18.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-2">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-19.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-20.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-1">
+              <img src="bilder/kullar/tidigare-kullar/valp2024-21.jpg" alt="Kull 2024" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+
+          </div>
+
+          <p class="photo-credit">Foto: Angelica Angerstål, Norrtälje · 21 bilder på de 9 valparna, maj 2024</p>
+
+        </div><!-- /subtab-kull2024 -->
+
+
+        <div class="gallery-subtab-content" id="subtab-kull2025">
+
+          <div class="tab-gallery-grid">
+            <div class="gallery-item reveal">
+              <img src="bilder/kullar/kull-2025/Valpar-2025-1.jpg" alt="Kull 2025" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-1">
+              <img src="bilder/kullar/kull-2025/Valpar-2025-2.jpg" alt="Kull 2025" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-2">
+              <img src="bilder/kullar/kull-2025/Valpar-2025-3.jpg" alt="Kull 2025" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="bilder/kullar/kull-2025/Valpar-2025-4.jpg" alt="Kull 2025" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-1">
+              <img src="bilder/kullar/kull-2025/Valpar-2025-5.jpg" alt="Kull 2025" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+            <div class="gallery-item reveal reveal--delay-2">
+              <img src="bilder/kullar/kull-2025/Valpar-2025-6.jpg" alt="Kull 2025" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+          </div>
+
+          <p class="photo-credit">Kull 2025 — Valpar från kullen Madde × Måns</p>
+        </div><!-- /subtab-kull2025 -->
+
+
+        <!-- Sub-tab: Kull 2023 -->
+        <div class="gallery-subtab-content" id="subtab-kull2023">
+          <div class="tab-notice">
+            <strong>Kull 2023</strong> — Bilder från kullen publiceras framöver.
+          </div>
+          <div class="placeholder-grid">
+            <div class="photo-placeholder reveal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              <span>Foto tillkommer</span>
+            </div>
+            <div class="photo-placeholder reveal reveal--delay-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              <span>Foto tillkommer</span>
+            </div>
+            <div class="photo-placeholder reveal reveal--delay-2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              <span>Foto tillkommer</span>
+            </div>
+          </div>
+          <p class="photo-credit">Bilder publiceras löpande</p>
+        </div><!-- /subtab-kull2023 -->
+
+      </div><!-- /tab-kullar -->
+
+
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <img src="bilder/Logo/logo-wide-transp.png" alt="Bergalids Kennel" />
+          <p class="footer__brand-desc">
+            Familjärt uppföderi av labrador retrievers i Furusund, Stockholm.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Navigation</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Hem</a></li>
+            <li><a href="index.html#om-oss">Vad vi gör</a></li>
+            <li><a href="index.html#kull-2026">Kull 2026</a></li>
+            <li><a href="kull-2025.html">Kull 2025</a></li>
+            <li><a href="tidigare-kullar/kull-2024.html">Kull 2024</a></li>
+            <li><a href="tidigare-kullar/kull-2023.html">Kull 2023</a></li>
+            <li><a href="index.html#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Kontakt</h4>
+          <div class="footer__contact-item">
+            <span>📞</span><a href="tel:+46709563883">+46 70 956 38 83</a>
+          </div>
+          <div class="footer__contact-item">
+            <span>✉️</span><a href="mailto:info@bergalidskennel.se">info@bergalidskennel.se</a>
+          </div>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/bergalidskennel" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg>
+            </a>
+            <a href="https://instagram.com/bergalidskennel/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Bergalids Kennel · Alla rättigheter förbehållna</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox">
+    <button class="lightbox__close" aria-label="Stäng">✕</button>
+    <button class="lightbox__prev" aria-label="Föregående">←</button>
+    <img class="lightbox__img" src="" alt="Galleri" />
+    <button class="lightbox__next" aria-label="Nästa">→</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
