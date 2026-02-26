@@ -761,6 +761,22 @@ h4 {
   gap: 16px;
 }
 
+/* ---- Om labradoren grids ---- */
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 72px;
+}
+
+.labrador-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 72px;
+}
+
 .gallery-item {
   overflow: hidden;
   border-radius: var(--r);
@@ -1519,14 +1535,14 @@ h4 {
   }
 
   /* Labrador fun-facts: 4 → 2 columns */
-  #om-labradoren>.container>div[style*="repeat(4"] {
-    grid-template-columns: repeat(2, 1fr) !important;
+  .facts-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   /* Labrador vardagsliv + färger: 2 → 1 column */
-  #om-labradoren>.container>div[style*="grid-template-columns:1fr 1fr"] {
-    grid-template-columns: 1fr !important;
-    gap: 48px !important;
+  .labrador-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
   }
 
   .about__image-badge {
@@ -1606,8 +1622,8 @@ h4 {
   }
 
   /* Labrador fun-facts: 4 → 1 column on small screens */
-  #om-labradoren>.container>div[style*="repeat(4"] {
-    grid-template-columns: 1fr !important;
+  .facts-grid {
+    grid-template-columns: 1fr;
   }
 
   .gallery-item:first-child {
