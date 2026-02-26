@@ -1499,13 +1499,13 @@ h4 {
     position: fixed;
     inset: 0;
     top: var(--nav-h);
-    background: rgba(255, 252, 248, 0.98);
-    backdrop-filter: blur(20px);
+    background: var(--bg);
     padding: 40px 24px;
     display: none;
     flex-direction: column;
     gap: 8px;
-    z-index: 99;
+    z-index: 200;
+    overflow-y: auto;
   }
 
   .nav.open .nav__mobile {
@@ -1524,6 +1524,27 @@ h4 {
 
   .nav__mobile a:hover {
     background: var(--cream);
+  }
+
+  .nav__mobile-section {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 20px 20px 4px;
+    margin-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav__mobile-sub {
+    padding-left: 36px !important;
+    font-size: 0.97rem !important;
+    color: var(--muted) !important;
+  }
+
+  .nav__mobile-sub:hover {
+    color: var(--accent) !important;
   }
 
   .about__grid,
