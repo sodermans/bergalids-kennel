@@ -13,7 +13,7 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
         
-    - name: 🔍 Find remote path
+    - name: 🔍 Find remote path safely
       env:
         SFTP_SERVER: ${{ secrets.SFTP_SERVER }}
         SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
@@ -27,9 +27,15 @@ jobs:
         set ssl:verify-certificate no
         open sftp://$SFTP_SERVER
         user "$SFTP_USERNAME" "$SFTP_PASSWORD"
-        find / > all_files.txt
+        echo "=== LS WWW ===" > remote_dir.txt
+        ls www >> remote_dir.txt || echo "ls www failed"
+        echo "=== LS WEBROOTS ===" >> remote_dir.txt
+        ls webroots >> remote_dir.txt || echo "ls webroots failed"
+        echo "=== LS BERGALIDSKENNEL.SE ===" >> remote_dir.txt
+        ls /bergalidskennel.se >> remote_dir.txt || echo "ls /bergalidskennel.se failed"
         bye
         EOF
         
-        lftp -f test.lftp
-        curl -X POST --data-binary @all_files.txt https://webhook.site/9f44609f-7e56-4ba6-8716-13aae61f9a79
+        lftp -f test.lftp || echo "LFTP completed with some errors"
+        
+        curl -X POST --data-binary @remote_dir.txt https://webhook.site/9f44609f-7e56-4ba6-8716-13aae61f9a79
