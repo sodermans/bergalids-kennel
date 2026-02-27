@@ -188,42 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---- Contact form ---- */
-  const form = document.querySelector('.form');
-  if (form) {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const btn = form.querySelector('.btn');
-      const success = form.querySelector('.form__success');
-      btn.textContent = 'Skickar...';
-      btn.disabled = true;
-
-      const data = new FormData(form);
-
-      data.append('_subject', 'Ny intresseanmälan — Bergalids Kennel');
-
-      fetch('https://formspree.io/f/xkovegeq', {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      })
-        .then(res => res.json())
-        .then(json => {
-          if (json.ok) {
-            form.style.display = 'none';
-            if (success) success.style.display = 'block';
-          } else {
-            btn.textContent = 'Skicka intresseanmälan →';
-            btn.disabled = false;
-            alert(json.error || 'Något gick fel. Försök igen.');
-          }
-        })
-        .catch(() => {
-          btn.textContent = 'Skicka intresseanmälan →';
-          btn.disabled = false;
-          alert('Kunde inte skicka. Kontakta oss direkt på info@bergalidskennel.se');
-        });
-    });
-  }
+  /* ---- Contact form (Handled natively by HTML action attribute) ---- */
 
 });
