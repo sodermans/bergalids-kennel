@@ -13,7 +13,7 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
         
-    - name: 🔍 Find remote path
+    - name: 📂 Sync files via lftp
       env:
         SFTP_SERVER: ${{ secrets.SFTP_SERVER }}
         SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
@@ -22,15 +22,17 @@ jobs:
         sudo apt-get update -qq
         sudo apt-get install -y lftp
         
+        echo "Root dir is www" > test_www_dir.txt
+        
         cat <<EOF > test.lftp
         set sftp:auto-confirm yes
         set ssl:verify-certificate no
         open sftp://$SFTP_SERVER
         user "$SFTP_USERNAME" "$SFTP_PASSWORD"
-        ls webroots > remote_dir.txt
-        ls / >> remote_dir.txt
+        cd www
+        mirror -R --verbose --size-only --exclude .git/ --exclude .github/ ./ ./
+        put test_www_dir.txt
         bye
         EOF
         
         lftp -f test.lftp
-        curl -X POST --data-binary @remote_dir.txt https://webhook.site/9f44609f-7e56-4ba6-8716-13aae61f9a79
