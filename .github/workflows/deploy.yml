@@ -24,14 +24,21 @@ jobs:
         sudo apt-get update -qq
         sudo apt-get install -y lftp
         
-        # Mirroring to the root directory './'
-        # without --size-only to ensure all files with newer git-checkout timestamps are uploaded.
         cat <<EOF > deploy.lftp
         set sftp:auto-confirm yes
         set ssl:verify-certificate no
         open sftp://$SFTP_SERVER
         user "$SFTP_USERNAME" "$SFTP_PASSWORD"
-        mirror -R --verbose --exclude-glob .git/ --exclude-glob .github/ --exclude-glob *.lftp ./ ./
+        
+        # Tvinga upp alla viktiga html-filer direkt för att kringgå eventuella mappsynk-problem
+        put index.html -o index.html
+        put galleri.html -o galleri.html
+        put kull-2026.html -o kull-2026.html
+        put tidigare-kullar/kull-2023.html -o tidigare-kullar/kull-2023.html
+        put tidigare-kullar/kull-2024.html -o tidigare-kullar/kull-2024.html
+        
+        # Tvinga upp videofilerna och bilderna också
+        mirror --reverse --overwrite --ignore-time --parallel=5 --exclude-glob .git/ --exclude-glob .github/ ./ ./
         bye
         EOF
         
