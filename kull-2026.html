@@ -479,9 +479,10 @@
       </div>
 
       <div class="reveal">
-        <form class="form" action="https://formspree.io/f/xkovegeq" method="POST">
-          <!-- Honeypot: spam bots fyller i detta, människor ser det inte -->
-          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
+        <form class="form" id="contact-form">
+          <input type="hidden" name="access_key" value="DIN_WEB3FORMS_ACCESS_KEY_HÄR" />
+          <input type="hidden" name="subject" value="Intresseanmälan Kull 2026" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
           <div class="form__row">
             <div class="form__group">
               <label class="form__label" for="name">Namn</label>
