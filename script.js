@@ -200,9 +200,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = new FormData(form);
 
-      fetch('send-mail.php', {
+      data.append('_subject', 'Ny intresseanmälan — Bergalids Kennel');
+
+      fetch('https://formspree.io/f/xkovegeq', {
         method: 'POST',
-        body: data
+        body: data,
+        headers: { 'Accept': 'application/json' }
       })
         .then(res => res.json())
         .then(json => {

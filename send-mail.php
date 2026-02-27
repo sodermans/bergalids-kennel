@@ -44,7 +44,7 @@ if ($preference) $body .= "<p><strong>Preferens:</strong> {$preference}</p>";
 $body .= "<p><strong>Meddelande:</strong><br>" . nl2br($message) . "</p>";
 
 $headers = [
-    'From'         => 'noreply@bergalidskennel.se',
+    'From'         => 'info@bergalidskennel.se',
     'Reply-To'     => $email,
     'MIME-Version' => '1.0',
     'Content-Type' => 'text/html; charset=utf-8',
