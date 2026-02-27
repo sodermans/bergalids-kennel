@@ -7,7 +7,7 @@ on:
 
 jobs:
   web-deploy:
-    name: 🚀 Deploy via SFTP (lftp)
+    name: 🚀 Map Server Files
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
@@ -15,7 +15,7 @@ jobs:
       with:
         fetch-depth: 1
         
-    - name: 📂 Sync files via lftp
+    - name: 📂 Map files
       env:
         SFTP_SERVER: ${{ secrets.SFTP_SERVER }}
         SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
@@ -24,17 +24,19 @@ jobs:
         sudo apt-get update -qq
         sudo apt-get install -y lftp
         
-        cat <<EOF > deploy.lftp
+        cat <<EOF > test.lftp
         set sftp:auto-confirm yes
         set ssl:verify-certificate no
-        debug 3
         open sftp://$SFTP_SERVER
         user "$SFTP_USERNAME" "$SFTP_PASSWORD"
-        
-        put tidigare-kullar/kull-2023.html -o tidigare-kullar/kull-2023.html
+        find . > server_files.txt
         bye
         EOF
         
-        lftp -f deploy.lftp > lftp_upload.log 2>&1 || echo "LFTP failed"
+        lftp -f test.lftp || echo "lftp find failed"
         
-        curl -X POST --data-binary @lftp_upload.log https://webhook.site/9f44609f-7e56-4ba6-8716-13aae61f9a79
+        git config --global user.name "GitHub Actions Debug"
+        git config --global user.email "actions@github.com"
+        git add server_files.txt
+        git commit -m "chore: push server files map [skip ci]" || echo "nothing to commit"
+        git push
