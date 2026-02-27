@@ -198,11 +198,28 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.textContent = 'Skickar...';
       btn.disabled = true;
 
-      // Simulate send (no backend)
-      setTimeout(() => {
-        form.style.display = 'none';
-        if (success) success.style.display = 'block';
-      }, 1000);
+      const data = new FormData(form);
+
+      fetch('send-mail.php', {
+        method: 'POST',
+        body: data
+      })
+        .then(res => res.json())
+        .then(json => {
+          if (json.success) {
+            form.style.display = 'none';
+            if (success) success.style.display = 'block';
+          } else {
+            btn.textContent = 'Skicka intresseanmälan →';
+            btn.disabled = false;
+            alert(json.error || 'Något gick fel. Försök igen.');
+          }
+        })
+        .catch(() => {
+          btn.textContent = 'Skicka intresseanmälan →';
+          btn.disabled = false;
+          alert('Kunde inte skicka. Kontakta oss direkt på info@bergalidskennel.se');
+        });
     });
   }
 
