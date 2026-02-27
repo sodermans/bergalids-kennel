@@ -3,24 +3,33 @@ name: Deploy to one.com (SFTP)
 on:
   push:
     branches:
-      - main # Triggas varje gång vi pushar till main
+      - main 
 
 jobs:
   web-deploy:
-    name: 🚀 Deploy via SFTP
+    name: 🚀 Deploy via SFTP (lftp)
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
       
-    - name: 📂 Sync files to one.com
-      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-      with:
-        server: ${{ secrets.SFTP_SERVER }}
-        port: 22
-        username: ${{ secrets.SFTP_USERNAME }}
-        password: ${{ secrets.SFTP_PASSWORD }}
-        local_path: './*'
-        remote_path: '/'
-        sftp_only: true
-        args: '-o ConnectTimeout=5'
+    - name: 🗑️ Exclude repository configs
+      run: rm -rf .git .github
+      
+    - name: 📂 Sync files via lftp
+      env:
+        SFTP_SERVER: ${{ secrets.SFTP_SERVER }}
+        SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+        SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+      run: |
+        sudo apt-get update -qq
+        sudo apt-get install -y lftp
+        # Skapa ett lftp-script
+        cat <<EOF > deploy.lftp
+        set sftp:auto-confirm yes
+        set ssl:verify-certificate no
+        open -u $SFTP_USERNAME,"$SFTP_PASSWORD" sftp://$SFTP_SERVER
+        mirror -R --verbose --size-only --parallel=5 ./ /
+        bye
+        EOF
+        lftp -f deploy.lftp
