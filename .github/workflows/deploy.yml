@@ -12,8 +12,10 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
         
-    - name: 🔍 Find remote path safely
+    - name: 📂 Sync files via lftp
       env:
         SFTP_SERVER: ${{ secrets.SFTP_SERVER }}
         SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
@@ -22,20 +24,15 @@ jobs:
         sudo apt-get update -qq
         sudo apt-get install -y lftp
         
-        cat <<EOF > test.lftp
+        # Mirroring to the root directory './'
+        # without --size-only to ensure all files with newer git-checkout timestamps are uploaded.
+        cat <<EOF > deploy.lftp
         set sftp:auto-confirm yes
         set ssl:verify-certificate no
         open sftp://$SFTP_SERVER
         user "$SFTP_USERNAME" "$SFTP_PASSWORD"
-        echo "=== LS WWW ===" > remote_dir.txt
-        ls www >> remote_dir.txt || echo "ls www failed"
-        echo "=== LS WEBROOTS ===" >> remote_dir.txt
-        ls webroots >> remote_dir.txt || echo "ls webroots failed"
-        echo "=== LS BERGALIDSKENNEL.SE ===" >> remote_dir.txt
-        ls /bergalidskennel.se >> remote_dir.txt || echo "ls /bergalidskennel.se failed"
+        mirror -R --verbose --exclude-glob .git/ --exclude-glob .github/ --exclude-glob *.lftp ./ ./
         bye
         EOF
         
-        lftp -f test.lftp || echo "LFTP completed with some errors"
-        
-        curl -X POST --data-binary @remote_dir.txt https://webhook.site/9f44609f-7e56-4ba6-8716-13aae61f9a79
+        lftp -f deploy.lftp
