@@ -1,28 +1,26 @@
-name: Deploy to one.com
+name: Deploy to one.com (SFTP)
 
 on:
   push:
     branches:
-      - main # Triggas varje gång du (eller jag) pushar till main-branchen
+      - main # Triggas varje gång vi pushar till main
 
 jobs:
   web-deploy:
-    name: 🚀 Deploy to FTP
+    name: 🚀 Deploy via SFTP
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      
+    - name: 📂 Sync files to one.com
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /
-        # Exkluderar filer vi inte vill ska ta plats på webbhotellet
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/.github/**
-          readme.md
+        server: ${{ secrets.SFTP_SERVER }}
+        port: 22
+        username: ${{ secrets.SFTP_USERNAME }}
+        password: ${{ secrets.SFTP_PASSWORD }}
+        local_path: './*'
+        remote_path: '/'
+        sftp_only: true
+        args: '-o ConnectTimeout=5'
