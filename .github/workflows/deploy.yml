@@ -24,12 +24,15 @@ jobs:
       run: |
         sudo apt-get update -qq
         sudo apt-get install -y lftp
-        # Skapa ett lftp-script
+        
+        # Använd relativ sökväg "./" istället för absolut sökväg "/"
+        # eftersom one.com kör sftp i en låst miljö (chroot).
         cat <<EOF > deploy.lftp
         set sftp:auto-confirm yes
         set ssl:verify-certificate no
         open -u $SFTP_USERNAME,"$SFTP_PASSWORD" sftp://$SFTP_SERVER
-        mirror -R --verbose --size-only --parallel=5 ./ /
+        mirror -R --verbose --size-only --parallel=2 ./ ./
         bye
         EOF
+        
         lftp -f deploy.lftp
