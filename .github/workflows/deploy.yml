@@ -27,9 +27,7 @@ jobs:
         set ssl:verify-certificate no
         open sftp://$SFTP_SERVER
         user "$SFTP_USERNAME" "$SFTP_PASSWORD"
-        ls www > remote_dir.txt
-        ls webroots >> remote_dir.txt
-        ls /bergalidskennel.se >> remote_dir.txt
+        ls /www > remote_dir.txt
         bye
         EOF
         
