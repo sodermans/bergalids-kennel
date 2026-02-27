@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
 
         if (response.ok) {
-          alert("Success! Your message has been sent.");
+          alert("Strålande, din kontaktförfrågan är inskickad");
           form.reset();
         } else {
           alert("Error: " + data.message);
