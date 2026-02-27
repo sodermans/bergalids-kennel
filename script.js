@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
         .then(res => res.json())
         .then(json => {
-          if (json.success) {
+          if (json.ok) {
             form.style.display = 'none';
             if (success) success.style.display = 'block';
           } else {
