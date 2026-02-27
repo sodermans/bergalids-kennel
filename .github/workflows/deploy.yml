@@ -12,8 +12,6 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
         
     - name: 🔍 Find remote path
       env:
@@ -24,19 +22,16 @@ jobs:
         sudo apt-get update -qq
         sudo apt-get install -y lftp
         
+        echo "Root directory contents:" > test_root_dir.txt
+        
         cat <<EOF > test.lftp
         set sftp:auto-confirm yes
         set ssl:verify-certificate no
         open sftp://$SFTP_SERVER
         user "$SFTP_USERNAME" "$SFTP_PASSWORD"
-        ls
+        ls >> test_root_dir.txt
+        put test_root_dir.txt
         bye
         EOF
         
-        lftp -f test.lftp > remote_dir.log 2>&1
-        
-        git config --global user.name "GitHub Actions Debugger"
-        git config --global user.email "actions@github.com"
-        git add remote_dir.log
-        git commit -m "chore: save remote dir log [skip ci]"
-        git push || echo "nothing to push"
+        lftp -f test.lftp
