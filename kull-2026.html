@@ -479,7 +479,38 @@
       </div>
 
       <div class="reveal" id="form-container">
-        <!-- Nytt formulär kommer här -->
+        <form class="form" id="form">
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="name">Namn</label>
+              <input class="form__input" type="text" id="name" name="name" placeholder="Ditt namn" required />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="email">E-post</label>
+              <input class="form__input" type="email" id="email" name="email" placeholder="din@epost.se" required />
+            </div>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="phone">Telefon</label>
+            <input class="form__input" type="tel" id="phone" name="phone" placeholder="070-123 45 67" />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="preference">Preferens (färg/kön)</label>
+            <input class="form__input" type="text" id="preference" name="preference"
+              placeholder="T.ex. svart hane eller brun tik" />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="message">Berätta om dig själv</label>
+            <textarea class="form__textarea" id="message" name="message"
+              placeholder="Hur ser din vardag ut? Har du hund sedan tidigare? Planerar du jakt, lydnad, nosework eller sällskap?"
+              required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Skicka intresseanmälan →</button>
+          <div class="form__success">
+            Tack för din intresseanmälan! Vi hör av oss när vi vet mer. 🐾
+          </div>
+        </form>
 
         <div class="info-box">
           <h4>Kom ihåg</h4>
