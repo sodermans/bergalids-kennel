@@ -12,9 +12,8 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
-      
-    - name: 🗑️ Exclude repository configs
-      run: rm -rf .git .github
+      with:
+        fetch-depth: 1
       
     - name: 📂 Sync files via lftp
       env:
@@ -25,14 +24,32 @@ jobs:
         sudo apt-get update -qq
         sudo apt-get install -y lftp
         
-        # Använd relativ sökväg "./" istället för absolut sökväg "/"
-        # eftersom one.com kör sftp i en låst miljö (chroot).
+        # Säkrare lftp-syntax (använder separat user/open för att undvika kommatecken-strul i lösenord)
         cat <<EOF > deploy.lftp
         set sftp:auto-confirm yes
         set ssl:verify-certificate no
-        open -u $SFTP_USERNAME,"$SFTP_PASSWORD" sftp://$SFTP_SERVER
-        mirror -R --verbose --size-only --parallel=2 ./ ./
+        debug 3
+        open sftp://$SFTP_SERVER
+        user "$SFTP_USERNAME" "$SFTP_PASSWORD"
+        mirror -R --verbose --size-only --exclude .git/ --exclude .github/ ./ ./
         bye
         EOF
         
-        lftp -f deploy.lftp
+        # Kör lftp och spara loggen
+        lftp -f deploy.lftp > lftp-debug.log 2>&1 || echo "LFTP failed"
+        
+        # Om det misslyckas sparar vi loggen i repot för felsökning
+        if grep -q "Fatal error" lftp-debug.log || grep -q "Access failed" lftp-debug.log || grep -q "Login failed" lftp-debug.log; then
+          echo "Deployment failed! Pushing log for debugging..."
+          
+          git config --global user.name "GitHub Actions Debugger"
+          git config --global user.email "actions@github.com"
+          
+          # Maskera lösenordet i loggen innan vi laddar upp det
+          sed -i "s/$SFTP_PASSWORD/HIDDEN_PASSWORD/g" lftp-debug.log
+          
+          git add lftp-debug.log
+          git commit -m "chore: save lftp debug log [skip ci]"
+          git push
+          exit 1
+        fi
