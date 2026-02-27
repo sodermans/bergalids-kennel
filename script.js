@@ -188,49 +188,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---- Web3Forms Contact form ---- */
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const btn = form.querySelector('.btn');
-      const success = form.querySelector('.form__success');
-
-      btn.textContent = 'Skickar...';
-      btn.disabled = true;
-
-      const formData = new FormData(form);
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
-
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: json
-      })
-        .then(async (response) => {
-          let json = await response.json();
-          if (response.status == 200) {
-            form.style.display = 'none';
-            if (success) success.style.display = 'block';
-          } else {
-            console.log(response);
-            btn.textContent = 'Skicka igen';
-            btn.disabled = false;
-            alert(json.message || 'Något gick fel.');
-          }
-        })
-        .catch(error => {
-          console.log(error);
-          btn.textContent = 'Skicka igen';
-          btn.disabled = false;
-          alert('Kunde inte skicka meddelandet.');
-        });
-    });
-  }
-
 });
