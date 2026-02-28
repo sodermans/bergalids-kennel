@@ -1,4 +1,4 @@
-name: Deploy to one.com (SFTP)
+name: Deploy to one.com (FTP)
 
 on:
   push:
@@ -7,42 +7,25 @@ on:
 
 jobs:
   web-deploy:
-    name: 🚀 Deploy via SFTP (lftp)
+    name: 🚀 Deploy via FTP
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
       with:
-        fetch-depth: 1
+        fetch-depth: 2
         
-    - name: 📂 Sync files via lftp
-      env:
-        SFTP_SERVER: ${{ secrets.SFTP_SERVER }}
-        SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
-        SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-      run: |
-        sudo apt-get update -qq
-        sudo apt-get install -y lftp
-        
-        # one.com använder /customers/x/y/z/domain.com/httpd.www som web root
-        # Från din skärmdump landar sftp på /customers/9/2/4/cpjye87i6/users/cpjye87i6_ssh/
-        # Vi navigerar upp två steg för att hitta httpd.www
-        
-        cat <<EOF > test.lftp
-        set sftp:auto-confirm yes
-        set ssl:verify-certificate no
-        open sftp://$SFTP_SERVER
-        user "$SFTP_USERNAME" "$SFTP_PASSWORD"
-        cd ../../httpd.www
-        ls > remote_dir.txt
-        put index.html -o index.html
-        put galleri.html -o galleri.html
-        put kull-2026.html -o kull-2026.html
-        put tidigare-kullar/kull-2023.html -o tidigare-kullar/kull-2023.html
-        put tidigare-kullar/kull-2024.html -o tidigare-kullar/kull-2024.html
-        mirror --reverse --overwrite --ignore-time --parallel=5 --exclude-glob .git/ --exclude-glob .github/ --exclude-glob *.lftp ./ ./
-        bye
-        EOF
-        
-        lftp -f test.lftp
-        curl -X POST --data-binary @remote_dir.txt https://webhook.site/9f44609f-7e56-4ba6-8716-13aae61f9a79
+    - name: 📂 Sync files (FTP)
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/.github*/**
+          **/*.lftp
+          **/all_webhooks*.txt
+          **/latest_map.txt
+          **/server_files.txt
