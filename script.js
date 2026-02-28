@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     const mediaList = [];
 
-    galleryItems.forEach((item, i) => {
+    galleryItems.forEach((item) => {
       const img = item.querySelector('img');
       const vid = item.querySelector('video');
 
@@ -104,15 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (src) {
+        const itemIndex = mediaList.length;
         mediaList.push({ type, src });
-        // update index on click
-        item.addEventListener('click', () => {
-          currentIndex = arguments[1] !== undefined ? arguments[1] : mediaList.length - 1;
-          // Since some items might not have a src resulting in skipped indices, let's just use the length - 1 logic
-          currentIndex = mediaList.length - 1; // Actually, the loop index is safe if we only push when src exists.
 
-          // Let's re-find the index accurately:
-          currentIndex = mediaList.findIndex(m => m.src === src);
+        item.addEventListener('click', () => {
+          currentIndex = itemIndex;
           openLightbox(mediaList[currentIndex]);
         });
       }
