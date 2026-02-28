@@ -86,26 +86,58 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightbox = document.querySelector('.lightbox');
   if (lightbox) {
     const lightboxImg = lightbox.querySelector('.lightbox__img');
+    const lightboxVid = lightbox.querySelector('.lightbox__vid');
     const galleryItems = document.querySelectorAll('.gallery-item');
     let currentIndex = 0;
-    const images = [];
+    const mediaList = [];
 
     galleryItems.forEach((item, i) => {
       const img = item.querySelector('img');
-      if (img) images.push(img.src);
+      const vid = item.querySelector('video');
 
-      item.addEventListener('click', () => {
-        currentIndex = i;
-        openLightbox(img.src);
-      });
+      let type = 'image';
+      let src = '';
+      if (img) { src = img.src; }
+      else if (vid) {
+        type = 'video';
+        src = vid.querySelector('source') ? vid.querySelector('source').src : vid.src;
+      }
+
+      if (src) {
+        mediaList.push({ type, src });
+        // update index on click
+        item.addEventListener('click', () => {
+          currentIndex = arguments[1] !== undefined ? arguments[1] : mediaList.length - 1;
+          // Since some items might not have a src resulting in skipped indices, let's just use the length - 1 logic
+          currentIndex = mediaList.length - 1; // Actually, the loop index is safe if we only push when src exists.
+
+          // Let's re-find the index accurately:
+          currentIndex = mediaList.findIndex(m => m.src === src);
+          openLightbox(mediaList[currentIndex]);
+        });
+      }
     });
 
-    function openLightbox(src) {
-      lightboxImg.style.opacity = '0';
-      lightboxImg.onload = () => {
-        lightboxImg.style.opacity = '1';
-      };
-      lightboxImg.src = src;
+    function openLightbox(media) {
+      if (media.type === 'video') {
+        if (lightboxImg) lightboxImg.style.display = 'none';
+        if (lightboxVid) {
+          lightboxVid.style.display = 'block';
+          lightboxVid.src = media.src;
+          lightboxVid.play();
+        }
+      } else {
+        if (lightboxVid) {
+          lightboxVid.style.display = 'none';
+          lightboxVid.pause();
+        }
+        if (lightboxImg) {
+          lightboxImg.style.display = 'block';
+          lightboxImg.style.opacity = '0';
+          lightboxImg.onload = () => lightboxImg.style.opacity = '1';
+          lightboxImg.src = media.src;
+        }
+      }
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -113,18 +145,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeLightbox() {
       lightbox.classList.remove('active');
       document.body.style.overflow = '';
+      if (lightboxVid) lightboxVid.pause();
     }
 
     lightbox.querySelector('.lightbox__close')?.addEventListener('click', closeLightbox);
 
-    lightbox.querySelector('.lightbox__prev')?.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      lightboxImg.src = images[currentIndex];
+    lightbox.querySelector('.lightbox__prev')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + mediaList.length) % mediaList.length;
+      openLightbox(mediaList[currentIndex]);
     });
 
-    lightbox.querySelector('.lightbox__next')?.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      lightboxImg.src = images[currentIndex];
+    lightbox.querySelector('.lightbox__next')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % mediaList.length;
+      openLightbox(mediaList[currentIndex]);
     });
 
     lightbox.addEventListener('click', e => {
@@ -135,12 +170,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!lightbox.classList.contains('active')) return;
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        lightboxImg.src = images[currentIndex];
+        currentIndex = (currentIndex - 1 + mediaList.length) % mediaList.length;
+        openLightbox(mediaList[currentIndex]);
       }
       if (e.key === 'ArrowRight') {
-        currentIndex = (currentIndex + 1) % images.length;
-        lightboxImg.src = images[currentIndex];
+        currentIndex = (currentIndex + 1) % mediaList.length;
+        openLightbox(mediaList[currentIndex]);
       }
     });
   }

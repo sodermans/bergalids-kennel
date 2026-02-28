@@ -12,6 +12,7 @@
     content="labrador bilder, labradorvalp foton, labrador kennel Stockholm, labrador retriever valpar, Bergalids Kennel" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.bergalidskennel.se/galleri.html" />
+  <link rel="icon" type="image/png" href="bilder/Logo/logo-round.png" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Bergalids Kennel" />
@@ -313,15 +314,16 @@
       <!-- ===== TAB: STINA ===== -->
       <div class="gallery-tab-content" id="tab-stina">
 
-        <div class="reveal" style="max-width: 800px; margin: 0 auto 40px; text-align: center;">
-          <h3 style="font-family: var(--font-h); font-size: 1.8rem; margin-bottom: 16px;">Stina tränar Nosework</h3>
-          <video controls style="width: 100%; border-radius: var(--r); box-shadow: var(--shadow-md);">
-            <source src="bilder/hundar/Stina-Video-1.mp4" type="video/mp4">
-            Din webbläsare stöder inte videoelementet.
-          </video>
-        </div>
-
         <div class="tab-gallery-grid">
+
+          <div class="gallery-item reveal" data-type="video">
+            <video src="bilder/hundar/Stina-Video-1.mp4" style="object-fit:cover; width:100%; height:100%;"
+              preload="metadata"></video>
+            <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" width="34" height="34">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg></div>
+          </div>
 
           <div class="gallery-item reveal">
             <img src="bilder/hundar/stina-1.jpg" alt="Stina i solen" />
@@ -716,36 +718,27 @@
 
         <!-- Sub-tab: Kull 2023 -->
         <div class="gallery-subtab-content" id="subtab-kull2023">
-          <div class="tab-notice">
-            <strong>Kull 2023</strong> — Bilder från kullen publiceras framöver.
+          <div class="tab-gallery-grid">
+            <div class="gallery-item reveal">
+              <img src="bilder/kullar/kull-2023/Kull 2023-1.jpg" alt="Vacker valp från Kull 2023" />
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+            </div>
+
+            <div class="gallery-item reveal reveal--delay-1" data-type="video">
+              <video src="bilder/kullar/kull-2023/Kull 2023-video1.mp4"
+                style="object-fit:cover; width:100%; height:100%;" preload="metadata"></video>
+              <div class="gallery-item__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" width="34" height="34">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg></div>
+            </div>
+
           </div>
-          <div class="placeholder-grid">
-            <div class="photo-placeholder reveal">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg>
-              <span>Foto tillkommer</span>
-            </div>
-            <div class="photo-placeholder reveal reveal--delay-1">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg>
-              <span>Foto tillkommer</span>
-            </div>
-            <div class="photo-placeholder reveal reveal--delay-2">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg>
-              <span>Foto tillkommer</span>
-            </div>
-          </div>
-          <p class="photo-credit">Bilder publiceras löpande</p>
+          <p class="photo-credit">Fler bilder från kullen 2023 publiceras löpande</p>
         </div><!-- /subtab-kull2023 -->
 
       </div><!-- /tab-kullar -->
@@ -812,6 +805,8 @@
     <button class="lightbox__close" aria-label="Stäng">✕</button>
     <button class="lightbox__prev" aria-label="Föregående">←</button>
     <img class="lightbox__img" src="" alt="Galleri" />
+    <video class="lightbox__vid" controls
+      style="display:none; max-width:85%; max-height:85vh; object-fit:contain; border-radius:var(--r); margin: 0 auto;"></video>
     <button class="lightbox__next" aria-label="Nästa">→</button>
   </div>
 
